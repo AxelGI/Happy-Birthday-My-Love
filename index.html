@@ -10,13 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* Variables de color */
         :root {
             --rosa-claro: #fdf0f3;
             --rosa-medio: #f7d6df;
             --dorado: #d4af37;
             --dorado-claro: #f3e5ab;
             --texto-oscuro: #4a4a4a;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
@@ -28,82 +31,92 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            overflow-x: hidden; /* Evita el scroll horizontal en móviles */
         }
 
         .container {
+            width: 100%;
             max-width: 1000px;
-            width: 90%;
-            margin: 40px auto;
+            padding: 40px 20px; /* Padding ajustado para dar respiro en los bordes */
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
+        /* Tipografía fluida: se adapta al ancho de la pantalla automáticamente */
         h1 {
             font-family: 'Great Vibes', cursive;
-            font-size: 5rem;
+            font-size: clamp(3.5rem, 10vw, 5.5rem); 
             color: var(--dorado);
-            margin-bottom: 10px;
+            margin: 0 0 10px 0;
             text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.2);
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
         .subtitle {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
             color: var(--rosa-medio);
             font-style: italic;
             margin-bottom: 40px;
             letter-spacing: 1px;
         }
 
-        /* Tarjeta del mensaje */
         .message-card {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             border: 2px solid var(--dorado-claro);
             border-radius: 15px;
-            padding: 40px;
+            padding: clamp(20px, 5vw, 40px);
             margin-bottom: 50px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             position: relative;
+            width: 100%;
+            max-width: 700px;
         }
 
-        /* Adornos dorados para la tarjeta */
         .message-card::before, .message-card::after {
             content: '✨';
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             position: absolute;
             color: var(--dorado);
         }
+        
         .message-card::before { top: 15px; left: 15px; }
         .message-card::after { bottom: 15px; right: 15px; }
 
         .message-card p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             line-height: 1.8;
             margin-bottom: 15px;
+            color: #555;
         }
 
         h2 {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
+            font-size: clamp(2.8rem, 8vw, 4rem);
             color: var(--dorado);
             margin-bottom: 30px;
         }
 
-        /* Galería de fotos (CSS Grid) */
+        /* Grid adaptativo perfecto para móviles y desktop */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding-bottom: 50px;
+            /* En móviles crea columnas de al menos 150px, en pantallas grandes se adaptan solas */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(15px, 4vw, 25px);
+            width: 100%;
+            padding-bottom: 40px;
         }
 
         .gallery-item {
             position: relative;
             overflow: hidden;
             border-radius: 12px;
-            border: 3px solid var(--dorado);
+            border: 2px solid var(--dorado);
             box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            aspect-ratio: 1 / 1; /* Mantiene las fotos cuadradas, estilo polaroid o IG */
+            aspect-ratio: 1 / 1;
+            /* Asegura que en móviles muy pequeños la imagen no se desborde */
+            width: 100%; 
         }
 
         .gallery-item img {
@@ -114,32 +127,32 @@
             display: block;
         }
 
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.3);
+        /* Efecto hover solo para dispositivos con mouse (evita que se quede pegado en táctil) */
+        @media (hover: hover) {
+            .gallery-item:hover {
+                box-shadow: 0 12px 25px rgba(212, 175, 55, 0.3);
+            }
+            .gallery-item:hover img {
+                transform: scale(1.08);
+            }
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        /* Footer */
         footer {
-            margin-top: 40px;
-            padding: 20px;
-            font-size: 1rem;
+            margin-top: auto;
+            padding: 25px 20px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
             color: var(--texto-oscuro);
             border-top: 1px solid var(--dorado-claro);
             width: 100%;
             text-align: center;
+            background-color: rgba(255, 255, 255, 0.3);
         }
 
-        /* Responsivo para móviles */
-        @media (max-width: 600px) {
-            h1 { font-size: 3.5rem; }
-            h2 { font-size: 2.8rem; }
-            .message-card { padding: 25px; }
-            .message-card p { font-size: 1.1rem; }
+        /* Ajustes extrafinos para celulares muy estrechos */
+        @media (max-width: 350px) {
+            .gallery {
+                grid-template-columns: 1fr; /* Fuerza 1 sola columna si la pantalla es muy chica */
+            }
         }
     </style>
 </head>
@@ -156,32 +169,15 @@
             <p><strong>Con todo mi amor, tu novio.</strong></p>
         </div>
 
-        <h2>Nuestros Momentos Favoritos</h2>
+        <h2>Nuestros Momentos</h2>
 
         <div class="gallery">
-            <div class="gallery-item">
-                <img src="foto1.jpg" alt="Un recuerdo hermoso juntos">
-            </div>
-            
-            <div class="gallery-item">
-                <img src="foto2.jpg" alt="Viaje juntos">
-            </div>
-            
-            <div class="gallery-item">
-                <img src="foto3.jpg" alt="Nuestra cita favorita">
-            </div>
-
-            <div class="gallery-item">
-                <img src="foto4.jpg" alt="Momento divertido">
-            </div>
-
-            <div class="gallery-item">
-                <img src="foto5.jpg" alt="Día especial">
-            </div>
-
-            <div class="gallery-item">
-                <img src="foto6.jpg" alt="Selfie de nosotros">
-            </div>
+            <div class="gallery-item"><img src="foto1.jpg" alt="Un recuerdo hermoso juntos"></div>
+            <div class="gallery-item"><img src="foto2.jpg" alt="Viaje juntos"></div>
+            <div class="gallery-item"><img src="foto3.jpg" alt="Nuestra cita favorita"></div>
+            <div class="gallery-item"><img src="foto4.jpg" alt="Momento divertido"></div>
+            <div class="gallery-item"><img src="foto5.jpg" alt="Día especial"></div>
+            <div class="gallery-item"><img src="foto6.jpg" alt="Selfie de nosotros"></div>
         </div>
     </div>
 
@@ -190,5 +186,4 @@
     </footer>
 
 </body>
-              </html>
-              
+</html>
