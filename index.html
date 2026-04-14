@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños, Mi Amor!</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables de color */
+        :root {
+            --rosa-claro: #fdf0f3;
+            --rosa-medio: #f7d6df;
+            --dorado: #d4af37;
+            --dorado-claro: #f3e5ab;
+            --texto-oscuro: #4a4a4a;
+        }
+
+        body {
+            background-color: var(--rosa-claro);
+            color: var(--texto-oscuro);
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 90%;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: var(--dorado);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.2);
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--rosa-medio);
+            font-style: italic;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        /* Tarjeta del mensaje */
+        .message-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid var(--dorado-claro);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        /* Adornos dorados para la tarjeta */
+        .message-card::before, .message-card::after {
+            content: '✨';
+            font-size: 1.5rem;
+            position: absolute;
+            color: var(--dorado);
+        }
+        .message-card::before { top: 15px; left: 15px; }
+        .message-card::after { bottom: 15px; right: 15px; }
+
+        .message-card p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--dorado);
+            margin-bottom: 30px;
+        }
+
+        /* Galería de fotos (CSS Grid) */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding-bottom: 50px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 3px solid var(--dorado);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            aspect-ratio: 1 / 1; /* Mantiene las fotos cuadradas, estilo polaroid o IG */
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 1rem;
+            color: var(--texto-oscuro);
+            border-top: 1px solid var(--dorado-claro);
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Responsivo para móviles */
+        @media (max-width: 600px) {
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.8rem; }
+            .message-card { padding: 25px; }
+            .message-card p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>¡Feliz Cumpleaños!</h1>
+        <div class="subtitle">Al amor de mi vida</div>
+
+        <div class="message-card">
+            <p>Mi amor,</p>
+            <p>Hoy celebramos tu vida. Quería hacer algo especial y único para ti, porque te mereces el mundo entero. Eres mi persona favorita, mi compañera de aventuras y la razón de mis sonrisas.</p>
+            <p>Que este nuevo año de vida esté lleno de alegrías, viajes increíbles y momentos mágicos juntos. Te amo muchísimo.</p>
+            <p><strong>Con todo mi amor, tu novio.</strong></p>
+        </div>
+
+        <h2>Nuestros Momentos Favoritos</h2>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="foto1.jpg" alt="Un recuerdo hermoso juntos">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="foto2.jpg" alt="Viaje juntos">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="foto3.jpg" alt="Nuestra cita favorita">
+            </div>
+
+            <div class="gallery-item">
+                <img src="foto4.jpg" alt="Momento divertido">
+            </div>
+
+            <div class="gallery-item">
+                <img src="foto5.jpg" alt="Día especial">
+            </div>
+
+            <div class="gallery-item">
+                <img src="foto6.jpg" alt="Selfie de nosotros">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Hecho con ❤️ especialmente para ti.
+    </footer>
+
+</body>
+              </html>
+              
